@@ -1,0 +1,33 @@
+sensor:
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'date_time_iso'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+  - platform: google_travel_time
+    api_key: !secret google_api_key 
+    origin: !secret home_place_id
+    destination: !secret work_place_id
+    name: "Home to Work"
+  - platform: google_travel_time
+    api_key: !secret google_api_key 
+    origin: !secret work_place_id
+    destination: !secret home_place_id
+    name: "Work to Home"
+  - platform: steam_online
+    api_key: !secret steam_api_key
+    accounts:
+      - 76561198156288037
+      - 76561198046963818
+      - 76561197993565851
+      - 76561198210960265
+      - 76561198068883101
+      - 76561198045706631
+      - 76561197965839809
+      - 76561198053216715
+      - 76561197996806250
+      - 76561198017257294

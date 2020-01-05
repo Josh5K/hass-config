@@ -2,97 +2,18 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-# Text to speech
 tts:
   - platform: google_translate
 
 lovelace:
   mode: yaml
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
+group: !include config/groups/groups.yaml
+automation: !include config/automations/automations.yaml
+script: !include config/scripts/scripts.yaml
+scene: !include config/scenes/scenes.yaml
 
-roku:
-  - host: !secret roku_host
-
-sensor:
-  - platform: time_date
-    display_options:
-      - 'time'
-      - 'date'
-      - 'date_time'
-      - 'date_time_iso'
-      - 'time_date'
-      - 'time_utc'
-      - 'beat'
-  - platform: google_travel_time
-    api_key: !secret google_api_key 
-    origin: !secret home_place_id
-    destination: !secret work_place_id
-    name: "Home to Work"
-  - platform: google_travel_time
-    api_key: !secret google_api_key 
-    origin: !secret work_place_id
-    destination: !secret home_place_id
-    name: "Work to Home"
-  - platform: steam_online
-    api_key: !secret steam_api_key
-    accounts:
-      - 76561198156288037
-      - 76561198046963818
-      - 76561197993565851
-      - 76561198210960265
-      - 76561198068883101
-      - 76561198045706631
-      - 76561197965839809
-      - 76561198053216715
-      - 76561197996806250
-      - 76561198017257294
+!include config/components/roku.yaml
+!include config/components/sensors.yaml
       
-frontend:
-  themes:
-    midnight-blue:
-      ### Main Interface Colors ###
-      primary-color: "#2F7EFD"
-      light-primary-color: "#6FA6FE"
-      primary-background-color: "#1F1F28"
-      secondary-background-color: var(--primary-background-color)
-      divider-color: "#2F2F3D"
-      ### Text ###
-      primary-text-color: "#FFFFFF"
-      secondary-text-color: "#6FA6FE"
-      text-primary-color: "#FFFFFF"
-      disabled-text-color: "#4E4E66"
-      ### Sidebar Menu ###
-      sidebar-icon-color: "#B6B6C1"
-      sidebar-text-color: "#F1F1F1"
-      sidebar-selected-background-color: var(--primary-background-color)
-      sidebar-selected-icon-color: "#6FA6FE"
-      sidebar-selected-text-color: var(--sidebar-selected-icon-color)
-      ### States and Badges ###
-      state-icon-color: "#2F7EFD"
-      state-icon-active-color: "#FBCD41"
-      state-icon-unavailable-color: var(--disabled-text-color)
-      ### Sliders ###
-      paper-slider-knob-color: "#2F7EFD"
-      paper-slider-knob-start-color: var(--paper-slider-knob-color)
-      paper-slider-pin-color: var(--paper-slider-knob-color)
-      paper-slider-active-color: var(--paper-slider-knob-color)
-      paper-slider-secondary-color: var(--light-primary-color)
-      ### Labels ###
-      label-badge-background-color: "#23232E"
-      label-badge-text-color: "#F1F1F1"
-      label-badge-red: "#6FA6FE"
-      ### Cards ###
-      paper-card-background-color: "#23232E"
-      paper-listbox-background-color: var(--primary-background-color)
-      ### Toggles ###
-      paper-toggle-button-checked-button-color: "#2F7EFD"
-      paper-toggle-button-checked-bar-color: "#6FA6FE"
-      paper-toggle-button-unchecked-button-color: var(--paper-toggle-button-checked-button-color)
-      paper-toggle-button-unchecked-bar-color: "#3E4756"
-      ### Table row ###
-      table-row-background-color: var(--primary-background-color)
-      table-row-alternative-background-color: var(--secondary-background-color)
+!include config/components/frontend.yaml

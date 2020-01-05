@@ -1,0 +1,2 @@
+roku:
+  - host: !secret roku_host
