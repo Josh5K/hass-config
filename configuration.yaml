@@ -13,7 +13,7 @@ automation: !include config/automations/automations.yaml
 script: !include config/scripts/scripts.yaml
 scene: !include config/scenes/scenes.yaml
 
-!include config/components/roku.yaml
-!include config/components/sensors.yaml
+roku: !include config/components/roku.yaml
+sensor: !include config/components/sensors.yaml
       
-!include config/components/frontend.yaml
+frontend: !include config/components/frontend.yaml
