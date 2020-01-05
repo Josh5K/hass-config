@@ -1,3 +1,0 @@
-title: Home
-views:
-!include views/main.yaml
